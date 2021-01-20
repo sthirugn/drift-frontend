@@ -261,9 +261,13 @@ export class DriftTable extends Component {
             });
 
             if (this.props.referenceId) {
-                if (system.state === 'DIFFERENT') {
-                    className.push('highlight');
-                    className.push('different-fact-cell');
+                if (system.is_obfuscated) {
+                    className.push('obfuscated');
+                } else {
+                    if (system.state === 'DIFFERENT') {
+                        className.push('highlight');
+                        className.push('different-fact-cell');
+                    }
                 }
             } else {
                 if (fact.state === 'DIFFERENT') {
